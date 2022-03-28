@@ -1,0 +1,67 @@
+<po-container class=" po-offset-lg-2 po-offset-xl-2 po-lg-8 po-mt-4">
+  <div class="po-row">
+    <po-widget class="">
+      <div class="po-xl-4 po-lg-4 po-lg-5 po-mt-2"><img
+          src="https://elogroup.com.br/wp-content/uploads/2021/10/20210621-v1-01-Marca-Principal.jpg" height="100"
+          width="280"></div>
+    </po-widget>
+    <div class="po-m-5">
+      <h2>Lista Leads</h2>
+    </div>
+  </div>
+  <div class="po-mt-4">
+    <po-button class="po-mt-5 po-ml-1" p-label="Novo Lead(+)" (p-click)="openQuestionnaire()"> </po-button>
+  </div>
+  <div class="po-row">
+    <div class=" po-xl-4 po-lg-4 po-md-4 po-sm-4">
+      <h3 class="po-mt-3 po-mb-3 ">Clientes com potencial</h3>
+
+      <div cdkDropList #clienteList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[dadosList]"
+        class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.nome}}</div>
+      </div>
+    </div>
+
+    <div class=" po-xl-4 po-lg-4 po-md-4 po-sm-4">
+      <h3 class="po-mt-3 po-mb-3 ">Dados confirmados</h3>
+
+      <div cdkDropList #dadosList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[reuniaoList]"
+        class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.nome}}</div>
+      </div>
+    </div>
+
+    <div class=" po-xl-4 po-lg-4 po-md-4 po-sm-4">
+      <h3 class="po-mt-3 po-mb-3 ">Reunião Agendada</h3>
+
+      <div cdkDropList #reuniaoList="cdkDropList" [cdkDropListData]="todos" class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of todos" cdkDrag>{{item.nome}}</div>
+      </div>
+    </div>
+</div>
+
+</po-container>
+
+<po-modal p-title="Adicionar lead" [p-primary-action]="confirm" [p-secondary-action]="close">
+  <form #optionsForm="ngForm">
+
+    <po-input name="name" p-label=" Nome:" [(ngModel)]="leads.nome" p-required="true"></po-input>
+    <po-input name="phone" p-label=" Telefone:" [(ngModel)]="leads.telefone"></po-input>
+    <po-input name="mail" p-label=" Email:" [(ngModel)]="leads.email"></po-input>
+    <div class="po-row">
+      <po-checkbox-group class="po-md-12" name="checkboxGroup" p-label="Oportunidades:" [p-options]="CheckOptions">
+      </po-checkbox-group>
+    </div>
+
+    <div class="po-row">
+
+    </div>
+  </form>
+
+  <po-modal-footer [p-disabled-align]="false">
+    <po-button class="po-md-4" p-label="Salvar" (p-click)="savelead();"> </po-button>
+    <po-button class="po-md-4" p-label="Cancelar" (p-click)="closeModal()"> </po-button>
+
+  </po-modal-footer>
+</po-modal>

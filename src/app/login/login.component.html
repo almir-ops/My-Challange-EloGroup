@@ -1,0 +1,19 @@
+<po-container class=" po-offset-lg-4 po-offset-xl-4 po-lg-3 po-pt-4">
+    <po-widget class="">
+        <div class="po-xl-3 po-m-1"><img
+                src="https://elogroup.com.br/wp-content/uploads/2021/10/20210621-v1-01-Marca-Principal.jpg" height="100"
+                width="250"></div>
+    </po-widget>
+    <div class="po-mt-3">
+        <po-login p-placeholder="Digite o usuario" p-label="Usuario*" [(ngModel)]="usuario"></po-login>
+    </div>
+    <po-password p-placeholder="Digite a senha" p-label="Senha*" [p-pattern]="pattern" [(ngModel)]="password"
+        [p-help]="help" p-error-pattern="Formato  de senha inválido"></po-password>
+    <po-password p-placeholder="Confirmar senha" p-label="Confirmação de senha*" [(ngModel)]="confirmNewPassword">
+    </po-password>
+    
+    <div class="po-ml-lg-4 po-pl-lg-5">
+        <po-button class="po-md-8" p-label="Registrar" (p-click)="setPassword()">
+        </po-button>
+    </div>
+</po-container>
