@@ -73,6 +73,7 @@ export class PanelleadsComponent implements OnInit {
   }
 
   refresh(): void {
+    location.reload();
   }
 
 
